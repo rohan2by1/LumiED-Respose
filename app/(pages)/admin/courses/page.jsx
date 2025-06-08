@@ -92,85 +92,69 @@ const AdminCoursesPage = () => {
   }
 
   return (
-    <div className="p-10">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Admin Dashboard - Courses</h1>
+    <div className="px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Admin Dashboard - Courses</h1>
         <CustomLink href="/admin/courses/modify">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">
+          <button className="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm sm:text-base">
             + Add New
           </button>
         </CustomLink>
       </div>
 
-      <div className="mb-4 flex items-center gap-3">
-        <p className="text-gray-700">Actions on {selectedCourses.length}:</p>
-        <button onClick={() => performBulkAction('draft')} className="px-3 py-1 bg-gray-300 rounded hover:bg-gray-200">Draft</button>
-        <button onClick={() => performBulkAction('published')} className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-400">Publish</button>
-        <button onClick={() => performBulkAction('unpublished')} className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-400">Unpublish</button>
-        {selectedCourses.length === 1 && <button onClick={() => deleteCourse(selectedCourses[0])} className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-500">Delete</button>}
-        {false && selectedCourses.length === 1 && <CustomLink target="_blank" href={`/admin/courses/modify/${selectedCourses[0]}`}><button className="px-3 py-1 bg-orange-500 text-white rounded hover:bg-orange-400">Edit</button></CustomLink>}
+      <div className="mb-4 flex flex-wrap items-center gap-2 sm:gap-3">
+        <p className="text-sm sm:text-base text-gray-700 w-full sm:w-auto">Actions on {selectedCourses.length}:</p>
+        <button onClick={() => performBulkAction('draft')} className="px-2 sm:px-3 py-1 bg-gray-300 rounded hover:bg-gray-400 transition-colors text-xs sm:text-sm">Draft</button>
+        <button onClick={() => performBulkAction('published')} className="px-2 sm:px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition-colors text-xs sm:text-sm">Publish</button>
+        <button onClick={() => performBulkAction('unpublished')} className="px-2 sm:px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition-colors text-xs sm:text-sm">Unpublish</button>
+        {selectedCourses.length === 1 && <button onClick={() => deleteCourse(selectedCourses[0])} className="px-2 sm:px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition-colors text-xs sm:text-sm">Delete</button>}
+        {false && selectedCourses.length === 1 && <CustomLink target="_blank" href={`/admin/courses/modify/${selectedCourses[0]}`}><button className="px-2 sm:px-3 py-1 bg-orange-500 text-white rounded hover:bg-orange-600 transition-colors text-xs sm:text-sm">Edit</button></CustomLink>}
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <p className="text-sm sm:text-base">Loading...</p>
       ) : courses.length === 0 ? (
-        <p>No courses available.</p>
+        <p className="text-sm sm:text-base">No courses available.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-200">
+        <div className="overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm">
+          <table className="min-w-full">
             <thead className="bg-gray-100">
               <tr>
-                <th className="p-2 border text-center">
+                <th className="p-2 sm:p-3 border-b border-gray-200 text-center sticky left-0 bg-gray-100">
                   <input
                     type="checkbox"
                     checked={selectedCourses.length === courses.length}
                     onChange={toggleAll}
                   />
                 </th>
-                {/* <th className="p-2 border text-left">Sno</th> */}
-                <th className="p-2 border text-left">Status</th>
-                <th className="p-2 border text-left">Name</th>
-                <th className="p-2 border text-left">URL</th>
-                <th className="p-2 border text-left">Price</th>
-                <th className="p-2 border text-left">Duration</th>
+                <th className="p-2 sm:p-3 border-b border-gray-200 text-left text-xs sm:text-sm font-medium whitespace-nowrap">Status</th>
+                <th className="p-2 sm:p-3 border-b border-gray-200 text-left text-xs sm:text-sm font-medium whitespace-nowrap">Name</th>
+                <th className="p-2 sm:p-3 border-b border-gray-200 text-left text-xs sm:text-sm font-medium whitespace-nowrap">URL</th>
+                <th className="p-2 sm:p-3 border-b border-gray-200 text-left text-xs sm:text-sm font-medium whitespace-nowrap">Price</th>
+                <th className="p-2 sm:p-3 border-b border-gray-200 text-left text-xs sm:text-sm font-medium whitespace-nowrap">Duration</th>
               </tr>
             </thead>
             <tbody>
               {courses.map((course, index) => (
-                <tr key={course.course_id} className="border-t">
-                  <td className="p-2 border text-center">
+                <tr key={course.course_id} className="border-b border-gray-200 hover:bg-gray-50">
+                  <td className="p-2 sm:p-3 text-center sticky left-0 bg-white">
                     <input
                       type="checkbox"
                       checked={selectedCourses.includes(course.course_id)}
                       onChange={() => toggleSelection(course.course_id)}
                     />
                   </td>
-                  <td className="p-2 border">
-                    <p className={`m-auto rounded text-center max-w-5 ${getStatusClassName(course.status)}`}>{course?.status?.toUpperCase()?.slice(0, 1)}</p>
+                  <td className="p-2 sm:p-3 whitespace-nowrap">
+                    <p className={`m-auto rounded text-center max-w-5 px-1 py-0.5 text-xs sm:text-sm ${getStatusClassName(course.status)}`}>{course?.status?.toUpperCase()?.slice(0, 1)}</p>
                   </td>
-                  {/* <td className="p-2 border">{index+1}</td> */}
-                  <td className="p-2 border">{course.course_name}</td>
-                  <td className="p-2 border">
-                    <CustomLink href={`/course/${course.unique_url}?preview=true`} target="_blank" className={"hover:underline inline-flex items-center gap-1"}>
+                  <td className="p-2 sm:p-3 text-xs sm:text-sm font-medium">{course.course_name}</td>
+                  <td className="p-2 sm:p-3 whitespace-nowrap">
+                    <CustomLink href={`/course/${course.unique_url}?preview=true`} target="_blank" className={"hover:underline inline-flex items-center gap-1 text-xs sm:text-sm"}>
                       {course.unique_url}
                     </CustomLink>
                   </td>
-                  <td className="p-2 border">{formatPrice(course.price)}</td>
-                  <td className="p-2 border">{course.course_duration}</td>
-                  {/* <td className="p-2 border flex justify-around items-center">
-                    <CustomLink href={`/course/${course.unique_url}?preview=true`} target="_blank" disabled={selectedCourses.length > 0}>
-                      <img src="/icons/view.png" alt="" className='bg-green-400 p-1 h-6 w-6 rounded hover:bg-green-500' />
-                    </CustomLink>
-                    {selectedCourses.length === 0 && <>
-                      <button onClick={() => deleteCourse(course.course_id)} disabled={selectedCourses.length > 0}>
-                        <img src="/icons/edit.png" alt="" className='bg-yellow-400 p-1 h-6 w-6 rounded hover:bg-yellow-500' />
-                      </button>
-                      <button onClick={() => deleteCourse(course.course_id)} disabled={selectedCourses.length > 0}>
-                        <img src="/icons/delete.png" alt="" className='bg-red-400 p-1 h-6 w-6 rounded hover:bg-red-500' />
-                      </button>
-                    </>
-                    }
-                  </td> */}
+                  <td className="p-2 sm:p-3 text-xs sm:text-sm whitespace-nowrap">{formatPrice(course.price)}</td>
+                  <td className="p-2 sm:p-3 text-xs sm:text-sm whitespace-nowrap">{course.course_duration}</td>
                 </tr>
               ))}
             </tbody>
