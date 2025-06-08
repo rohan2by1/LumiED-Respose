@@ -1,0 +1,148 @@
+/* Certificate Page Container */
+.certificate-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f6f9;
+    padding: 20px;
+}
+
+/* Certificate Card */
+.certificate-card {
+    width: 80%;
+    max-width: 900px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    border: 2px solid #e2e8f0;
+}
+
+/* Title */
+.certificate-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 30px;
+}
+
+/* Subtitle */
+.certificate-subtitle {
+    font-size: 1.5rem;
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+
+/* Name */
+.certificate-name {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+/* Course Subtitle */
+.certificate-course-subtitle {
+    font-size: 1.25rem;
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+
+/* Course Name */
+.certificate-course-name {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #2b6cb0;
+    margin-bottom: 30px;
+}
+
+/* Duration */
+.certificate-duration {
+    font-size: 1.2rem;
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+
+/* Footer Section */
+.certificate-footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Signature Section */
+.signature-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Signature Image */
+.signature-img {
+    height: 80px;
+}
+
+/* Instructor Name */
+.instructor-name {
+    font-size: 1.1rem;
+    color: #2d3748;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Instructor Role */
+.instructor-role {
+    font-size: 1rem;
+    color: #718096;
+}
+
+/* Issue Date Section */
+.issue-date {
+    font-size: 1.2rem;
+    color: #2d3748;
+    font-weight: bold;
+}
+
+/* Actions Section (outside of certificate card) */
+.certificate-actions {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* Verification Link */
+.certificate-verification {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #2d3748;
+}
+
+.certificate-verification a {
+    color: #2b6cb0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Download Button */
+.certificate-download {
+    margin-top: 20px;
+}
+
+.download-btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #2b6cb0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #9231ce;
+}
